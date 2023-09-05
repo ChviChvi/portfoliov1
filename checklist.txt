@@ -1,0 +1,29 @@
+
+
+
+
+
+
+about me:
+- small introduction, with picture.
+- projects
+    > unity, game (unfinished)
+    > frontend backend website
+    > robot rally
+- list with subjects
+- list with things i worked with
+- contact
+- github
+
+https://dvlpr.pro/#home
+
+background:
+- something subtle in a corner, moving allong, changing every slide?
+
+website:
+- pages have to dynemically swoop
+- button to swoop back to the beginning
+
+ADDONS
+- small uffe you can't click(jumps around), if you click him you wil go to a website full of pictures with him.
+- cursor do something funny?
