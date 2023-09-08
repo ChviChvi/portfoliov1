@@ -1,13 +1,22 @@
 <template>
-  <div>
+  <div className="page">
 
-    <h1>Welcome to the contact</h1>
+    <div class="background-contact">
+      hello
+      <h1>Welcome to the contact</h1>
 
+    </div>
   </div>
 </template>
 
 <script>
 
-console.log("projects")
+console.log("contact")
+import '~/assets/css/template.css'
 
+
+import { blockNavigationWithDelay } from 'assets/js/navigation.js'; // Replace with the actual path
+export default {
+  beforeRouteLeave: blockNavigationWithDelay(), // Adjust the delay as needed
+};
 </script>

@@ -2,13 +2,12 @@
 export default defineNuxtConfig({
   devtools: { enabled: true },
   app: {
-    pageTransition: { name: 'page', mode: 'out-in' }
+    /**
+     * Page transition caused errors, so im using css now.
+     */
+     pageTransition: {
+        name: 'page',
+        mode: 'out-in',
+     }
   },
-  data() {
-    return {
-      show: true
-    }
-  },
-  transition: 'about'
-
 })
