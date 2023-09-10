@@ -2,7 +2,7 @@
 
 
 <template>
-  <div className="page">
+  <div class="page">
 
    <h1>Welcome to the about lorem ipsum</h1>
 

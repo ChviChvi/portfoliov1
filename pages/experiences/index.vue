@@ -1,5 +1,5 @@
 <template>
-  <div className="page">
+  <div class="page">
 
     <h1>Welcome to the experiences</h1>
 

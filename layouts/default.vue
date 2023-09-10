@@ -1,5 +1,6 @@
 <template>
-  <div>
+  <div class="background_background1">
+
     <header> n o o b</header>
     <div className="nav-background" />
     <navigation > </navigation>
@@ -18,7 +19,7 @@ import Navigation from "../components/navigation";
 import Bottomfoot from "../components/bottomfoot";
 import { blockNavigationWithDelay } from 'assets/js/navigation.js'; // Replace with the actual path
 
-
+/*<img src="~/assets/1clownfish.jpg" alt="upper-background" class="upper-background" />*/
 
 export default {
   components: {Bottomfoot, Navigation},

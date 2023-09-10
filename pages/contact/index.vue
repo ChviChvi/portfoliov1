@@ -1,5 +1,5 @@
 <template>
-  <div className="page">
+  <div class="page">
 
     <div class="background-contact">
       hello
