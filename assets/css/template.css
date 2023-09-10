@@ -1,19 +1,58 @@
 html{
-    height: 100vh;
+    background: lightslategrey;
 }
 
-body {
-    background: antiquewhite;
 
+
+body {
+    overflow: hidden;
+}
+
+header{
+    height: 0vh;
+}
+
+
+/* this doesnt work wtf*/
+.hover-div {
+    color: darkslategray;
+    background-color: blue;
+    display: flex;
+    offset-position: left top;
+    height: 40px;
+    width: 40px;
+    animation: hoverEffect 1s infinite alternate ease-in-out; /* Define the animation */
+}
+
+@keyframes hoverEffect {
+    0% {
+        transform: translateY(0); /* Start position */
+    }
+    100% {
+        transform: translateY(-10px); /* End position (adjust as needed) */
+    }
 }
 
 
 /*
 PAGE DISTRIBUTION
  */
-.column_nav{
+
+.nav-background{
+
+    background: rgba(255,255,255, 0.4) ;
+    height: 98vh;
     float: right;
     width: 15vh;
+}
+.column_nav{
+    right: 0;
+    width: 15vh;
+    color: rgba(255,255,255, 1) ;
+    height: 98vh;
+    position: fixed;
+
+
 }
 /*.column_body{*/
 /*    float: left;*/
@@ -26,8 +65,8 @@ PAGE DISTRIBUTION
     align-items: center;
     display: flex;
 
-    height: 90vh;
-    width: 100vh;
+    height: 95vh;
+    width: 80vh;
     justify-content: center;
 
 }
@@ -40,15 +79,15 @@ h1{
 .page-enter-active,
 .page-leave-active {
 
-    transition: opacity 0.5s, transform 1.0s;
+    transition: opacity 0.425s, transform 0.425s;
 }
 .page-enter-from{
     opacity: 0;
-    transform: translateY(-50vh);
+    transform: translateY(-20vh);
 }
 .page-leave-to {
     opacity: 0;
-    transform: translateY(50vh);
+    transform: translateY(20vh);
 }
 
 .background-contact{
@@ -57,42 +96,41 @@ h1{
 
 
 #bottomfoot{
-    position: absolute;
+    position: static;
     bottom: 0;
     width: 100%;
-    height: 2.5rem;            /* Footer height */
+
+    height: 5vh;            /* Footer height */
+
+}
+.uffe-gif{
+    width: 100px; /* Adjust the width to your desired size */
+    position: absolute;
+    height: auto;
+    bottom:0;
+    right:0;
 }
 
+.githubicon{
+    width: 40px; /* Adjust the width to your desired size */
+    position: relative;
+    height: auto;
+    float: left;
+    opacity: 0.5;
+}
 
+.linkedinicon{
+    width: 40px; /* Adjust the width to your desired size */
+    position: relative;
+    height: auto;
+    padding-left: 0.5rem;
+    float: left;
+    opacity: 0.5;
 
-/*
-PAGE TRANSITION
- */
-
-
-
-
+}
 
 
 /*
 footer
  */
-.hover-div {
-    width: 100px;
-    height: 100px;
-    background-color: blue;
-    color: white;
-    text-align: center;
-    line-height: 100px;
-    position: relative;
-    animation: hoverEffect 1s infinite alternate ease-in-out; /* Define the animation */
-}
 
-@keyframes hoverEffect {
-    0% {
-        transform: translateY(0); /* Start position */
-    }
-    100% {
-        transform: translateY(-10px); /* End position (adjust as needed) */
-    }
-}
