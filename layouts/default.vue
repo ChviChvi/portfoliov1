@@ -1,13 +1,13 @@
 <template>
   <div class="background_background1">
-    <div class="bug bug1" @click="handleBugClick"></div>
-    <div class="bug bug2" @click="handleBugClick"></div>
     <header> n o o b</header>
-    <div className="nav-background" />
+    <div class="nav-background" />
     <navigation > </navigation>
 
     <slot class="column_body"> </slot>
     <bottomfoot id="bottomfoot" />
+
+
   </div>
 </template>
 
@@ -30,6 +30,7 @@ export default {
     // Add an event listener for the wheel event
     window.addEventListener('wheel', this.handleWheel);
     this.moveBugs();
+
   },
   beforeDestroy() {
     // Remove the event listener when the component is destroyed
@@ -50,40 +51,18 @@ export default {
   },
 
   methods: {
-    initializeBugs() {
-      const bugs = document.querySelectorAll('.bug');
-      bugs.forEach((bug) => {
-        this.placeBugRandomly(bug);
-      });
-    },
+    //BUGSS
     moveBugs() {
-      const bugs = document.querySelectorAll('.bug');
       setInterval(() => {
-        bugs.forEach((bug) => {
-          this.moveBug(bug);
-        });
-      }, 3000); // Move bugs every 3 seconds
+        // Calculate new positions for Bug 1 and Bug 2 (you can customize this)
+        this.bug1PositionX = Math.random() * 100; // Example: Random position between 0 and 100
+        this.bug1PositionY = Math.random() * 100;
+        this.bug2PositionX = Math.random() * 100;
+        this.bug2PositionY = Math.random() * 100;
+      }, 2000); // Change the time interval as needed
     },
-    placeBugRandomly(bug) {
-      const maxX = window.innerWidth - bug.clientWidth;
-      const maxY = window.innerHeight - bug.clientHeight;
-      const newX = Math.random() * maxX;
-      const newY = Math.random() * maxY;
-      bug.style.left = `${newX}px`;
-      bug.style.top = `${newY}px`;
-    },
-    moveBug(bug) {
-      const maxX = window.innerWidth - bug.clientWidth;
-      const maxY = window.innerHeight - bug.clientHeight;
-      const newX = Math.random() * maxX;
-      const newY = Math.random() * maxY;
-      const rotation = Math.atan2(newY - parseFloat(bug.style.top), newX - parseFloat(bug.style.left)) * (180 / Math.PI);
-      bug.style.transform = `translate(${newX}px, ${newY}px) rotate(${rotation}deg)`;
-    },
-    handleBugClick(event) {
-      const bugElement = event.currentTarget;
-      bugElement.classList.add('clicked');
-    },
+
+    //SCROLLING
     handleWheel(event) {
       if (this.isScrolling) {
         // If scrolling action is already in progress, do nothing
