@@ -1,13 +1,12 @@
 <template>
   <div class="background_background1">
+
     <header> n o o b</header>
-    <div class="nav-background" />
+    <div className="nav-background" />
     <navigation > </navigation>
 
     <slot class="column_body"> </slot>
     <bottomfoot id="bottomfoot" />
-
-
   </div>
 </template>
 
@@ -29,8 +28,6 @@ export default {
   mounted() {
     // Add an event listener for the wheel event
     window.addEventListener('wheel', this.handleWheel);
-    this.moveBugs();
-
   },
   beforeDestroy() {
     // Remove the event listener when the component is destroyed
@@ -49,20 +46,49 @@ export default {
       currentRouteIndex: 0, // Index of the current route in the routes array
     };
   },
-
+  // beforeDestroy() {
+  //   window.removeEventListener("scroll", this.handleScroll);
+  // },
+  // data() {
+  //   return {
+  //     scrollPosition: 0,
+  //     routes: [
+  //       "/",
+  //       "/about",
+  //       "/experiences",
+  //       "/projects",
+  //       "/courses",
+  //       "/contact",
+  //     ],
+  //   };
+  // },
   methods: {
-    //BUGSS
-    moveBugs() {
-      setInterval(() => {
-        // Calculate new positions for Bug 1 and Bug 2 (you can customize this)
-        this.bug1PositionX = Math.random() * 100; // Example: Random position between 0 and 100
-        this.bug1PositionY = Math.random() * 100;
-        this.bug2PositionX = Math.random() * 100;
-        this.bug2PositionY = Math.random() * 100;
-      }, 2000); // Change the time interval as needed
-    },
-
-    //SCROLLING
+    // handleScroll() {
+    //   const scrollY = window.scrollY;
+    //   const scrollDirection = scrollY > this.scrollPosition ? "down" : "up";
+    //
+    //   console.log(scrollDirection)
+    //   // Update the scroll position
+    //   this.scrollPosition = scrollY;
+    //
+    //   // Define a threshold for when to trigger navigation
+    //   const threshold = 100; // Adjust this value as needed
+    //
+    //   // Get the current route index
+    //   const currentRouteIndex = this.routes.indexOf(this.$route.path);
+    //
+    //   if (scrollDirection === "down" && scrollY > threshold) {
+    //     // Scroll down, navigate to the next page if not on the last page
+    //     if (currentRouteIndex < this.routes.length - 1) {
+    //       this.$router.push(this.routes[currentRouteIndex + 1]);
+    //     }
+    //   } else if (scrollDirection === "up" && scrollY < threshold) {
+    //     // Scroll up, navigate to the previous page if not on the homepage
+    //     if (currentRouteIndex > 0) {
+    //       this.$router.push(this.routes[currentRouteIndex - 1]);
+    //     }
+    //   }
+    // },
     handleWheel(event) {
       if (this.isScrolling) {
         // If scrolling action is already in progress, do nothing

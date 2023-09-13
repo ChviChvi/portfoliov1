@@ -4,18 +4,18 @@ html{
     color: white;
 }
 
-/*.background_background1{*/
-/*    position: relative;*/
-/*}*/
-/*.upper-background{*/
-/*    position: absolute;*/
-/*    bottom: 0;*/
-/*    left: 0;*/
-/*    width: 50%;*/
-/*    height: auto;*/
-/*    background-size: 50% auto;*/
-/*    z-index: -1; !* Set a negative z-index to place it behind other content *!*/
-/*}*/
+.background_background1{
+    position: relative;
+}
+.upper-background{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50%;
+    height: auto;
+    background-size: 50% auto;
+    z-index: -1; /* Set a negative z-index to place it behind other content */
+}
 
 
 body {
@@ -61,20 +61,19 @@ ul, li {
 
 
 .nav-background{
-
+    padding-top: 20vh;
     background: rgba(255,255,255, 0.4) ;
     height: 78vh;
     float: right;
-    padding-top: 25%;
-    width: 10%;
+    width: 15vh;
 }
 .column_nav{
-
+    padding-top: 20vh;
     position: relative;
     right: 0;
-    width: 10%;
+    width: 15vh;
     color: rgba(255,255,255, 1) ;
-
+    height: 78vh;
 
 
 }
@@ -115,7 +114,7 @@ ul, li {
     display: flex;
 
     height: 95vh;
-    width: 90%;
+    width: 80vh;
     justify-content: center;
 
 }
@@ -138,25 +137,6 @@ h1{
     opacity: 0;
     transform: translateY(20vh);
 }
-
-.element1-enter-active,
-.element1-leave-active {
-    transition: opacity 0.3s, transform 0.3s;
-}
-
-.element1-enter-from {
-    opacity: 0;
-    transform: translateY(-10vh);
-}
-
-.element1-leave-to {
-    opacity: 0;
-    transform: translateY(10vh);
-}
-
-
-
-
 
 .background-contact{
     background: red;
@@ -201,18 +181,6 @@ h1{
 
 
 /*
-bugs
+footer
  */
 
-.background_background1 {
-    position: relative;
-    overflow: hidden;
-    /* Your other styles here */
-}
-
-.bug {
-    position: absolute;
-    width: 50px; /* Adjust the width and height as needed */
-    height: 50px;
-    /* Add any other initial styles you want */
-}
