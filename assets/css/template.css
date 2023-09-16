@@ -21,23 +21,39 @@ BUGS
 .bug {
     position: absolute;
     transform-origin: center;
-    width: 50px;
-    height: 50px;
-    transition: transform 5s ;
+    animation-fill-mode: forwards;
+    transform: scale(0.2);
+    transition: transform 2s ease-in-out ;
+}
+#bug1{
+    top:-20vh;
+
 }
 
-.rotating {
-    animation: rotate 5s linear infinite;
+.line {
+    position: absolute;
+    transform-origin: left;
+    background-color: red; /* You can change the color as needed */
+    height: 2px; /* Thickness of the line */
+    width: 0; /* Initially, the line has zero width */
+    transition: width 0.5s; /* Add a transition effect for smooth line drawing */
 }
 
-@keyframes rotate {
-    0% {
-        transform: rotate(0deg);
-    }
-    100% {
-        transform: rotate(360deg);
-    }
-}
+
+
+
+/*.rotating {*/
+/*    animation: rotate 1s linear infinite;*/
+/*}*/
+
+/*@keyframes rotate {*/
+/*    0% {*/
+/*        transform: rotate(0deg);*/
+/*    }*/
+/*    100% {*/
+/*        transform: rotate(360deg);*/
+/*    }*/
+/*}*/
 
 /*
 
@@ -215,7 +231,4 @@ h1{
 }
 
 
-/*
-footer
- */
 

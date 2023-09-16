@@ -11,3 +11,9 @@ export function blockNavigationWithDelay() {
 }
 
 
+export function calculateRotationAngle(currentX, currentY, destinationX, destinationY) {
+    const dx = destinationX - currentX;
+    const dy = destinationY - currentY;
+    return (Math.atan2(dy, dx) * 180) / Math.PI;
+}
+
