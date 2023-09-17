@@ -6,22 +6,22 @@
           <ul>
 
             <div class="nav_boxes1">
-            <li><NuxtLink to="/">Home</NuxtLink></li>
+            <li><NuxtLink to="/"><h1>Home</h1></NuxtLink></li>
             </div>
             <div class="nav_boxes2">
-            <li><NuxtLink to="/about">About</NuxtLink></li>
+            <li><NuxtLink to="/about"><h1>About</h1></NuxtLink></li>
             </div>
             <div class="nav_boxes3">
-            <li><NuxtLink to="/experiences">Experiences</NuxtLink></li>
+            <li><NuxtLink to="/experiences"><h1>Experiences</h1></NuxtLink></li>
             </div>
             <div class="nav_boxes4">
-            <li><NuxtLink to="/projects">Projects</NuxtLink></li>
+            <li><NuxtLink to="/projects"><h1>Projects</h1></NuxtLink></li>
             </div>
             <div class="nav_boxes5">
-            <li><NuxtLink to="/courses">Courses</NuxtLink></li>
+            <li><NuxtLink to="/courses"><h1>Courses</h1></NuxtLink></li>
             </div>
             <div class="nav_boxes6">
-            <li><NuxtLink to="/contact">contact</NuxtLink></li>
+            <li><NuxtLink to="/contact"><h1>contact</h1></NuxtLink></li>
             </div>
 
           </ul>

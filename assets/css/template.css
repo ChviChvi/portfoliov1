@@ -24,10 +24,14 @@ BUGS
     animation-fill-mode: forwards;
     transform: scale(0.2);
     transition: transform 2s ease-in-out ;
+    display: none;
 }
-#bug1{
-    top:-20vh;
 
+
+.splat-animation {
+    transition: transform 0.2s ease-in-out;
+    transform: translateY(90vh); /* Move the bug to the bottom of the screen */
+    /* You can add more CSS properties here to style the "splat" appearance */
 }
 
 .line {
@@ -65,7 +69,7 @@ BUGS
     width: 50%;
     height: auto;
     background-size: 50% auto;
-    z-index: -1; /* Set a negative z-index to place it behind other content */
+    z-index: -1;
 }
 
 
@@ -112,7 +116,7 @@ ul, li {
 
 
 .nav-background{
-    padding-top: 20vh;
+    padding-bottom: 20vh;
     background: rgba(255,255,255, 0.4) ;
     height: 78vh;
     float: right;
@@ -121,6 +125,7 @@ ul, li {
 .column_nav{
     padding-top: 20vh;
     position: relative;
+    background: rgba(255,255,255, 0.4) ;
     right: 0;
     width: 15vh;
     color: rgba(255,255,255, 1) ;
@@ -153,21 +158,17 @@ ul, li {
     padding: 1vh;
 
 }
-/*.column_body{*/
-/*    float: left;*/
-/*    width: 80%;*/
-/*    height: 60vh;*/
 
-/*}*/
 
 .page{
     align-items: center;
+    position: relative;
     display: flex;
-
+    left: 8vh;
     height: 95vh;
     width: 80vh;
     justify-content: center;
-
+    pointer-events: none;
 }
 h1{
 
@@ -218,6 +219,8 @@ h1{
     height: auto;
     float: left;
     opacity: 0.5;
+    bottom: 8vh;
+    left: 8vh;
 }
 
 .linkedinicon{
@@ -227,7 +230,13 @@ h1{
     padding-left: 0.5rem;
     float: left;
     opacity: 0.5;
-
+    bottom: 8vh;
+    left: 8vh;
+}
+.bugcounter{
+    top: 8vh;
+    position: relative;
+    left: 8vh;
 }
 
 

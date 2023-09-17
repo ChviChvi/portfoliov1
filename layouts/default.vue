@@ -2,29 +2,29 @@
   <div class="background_background1" id="bugarea1">
 <!--    <div class="line" id="line"></div>-->
     <!-- Bug 1 -->
-    <div class="bug" id="bug1" @click="handleBugClick('bug1')">
+    <div class="bug top-left" id="bug1" @click="handleBugClick('bug1')">
       <img src="../assets/bugs/bug-example1.png" alt="Bug 1" />
     </div>
 
     <!-- Bug 2 -->
-    <div class="bug" id="bug2" @click="handleBugClick('bug2')">
+    <div class="bug top-right" id="bug2" @click="handleBugClick('bug2')">
       <img src="../assets/bugs/bug-example2.png" alt="Bug 2" />
     </div>
 
-    <div class="bug" id="bug3" @click="handleBugClick('bug3')">
+    <div class="bug bottom-left" id="bug3" @click="handleBugClick('bug3')">
       <img src="../assets/bugs/bug-example1.png" alt="Bug 1" />
     </div>
 
-    <div class="bug" id="bug4" @click="handleBugClick('bug4')">
+    <div class="bug bottom-right" id="bug4" @click="handleBugClick('bug4')">
       <img src="../assets/bugs/bug-example1.png" alt="Bug 1" />
     </div>
 
-    <div class="bug" id="bug5" @click="handleBugClick('bug5')">
+    <div class="bug bottom-right" id="bug5" @click="handleBugClick('bug5')">
       <img src="../assets/bugs/bug-example1.png" alt="Bug 1" />
     </div>
 
 
-    <header> n o o b</header>
+    <header class="bugcounter"> {{ deadBugsCount }}/5 bugs fixed</header>
     <div className="nav-background" />
     <navigation > </navigation>
 
@@ -49,9 +49,23 @@ export default {
   beforeRouteLeave: blockNavigationWithDelay(), // Adjust the delay as needed
   calculateRotationAngle: calculateRotationAngle(),
 
+  computed: {
+    deadBugsCount() {
+      let count = 0;
+      for (const bugKey in this.bugs) {
+        if (this.bugs[bugKey].dead) {
+          count++;
+        }
+      }
+      return count;
+    }
+  },
+
   mounted() {
     // Add an event listener for the wheel event
     window.addEventListener('wheel', this.handleWheel);
+
+
 
 
     this.moveBug('bug1', this.bugs.bug1.x, this.bugs.bug1.y,this.bugs.bug1.angle);
@@ -82,13 +96,13 @@ export default {
       currentRouteIndex: 0, // Index of the current route in the routes array
       rotation_done: false,
       rotated: 0,
-      bugs: { bug1: {x:0,y:0, angle:0, rotation_done:false, dead:false},
-              bug2: {x:0,y:0, angle:0, rotation_done:false, dead:false},
-              bug3: {x:0,y:0, angle:0, rotation_done:false, dead:false},
-              bug4: {x:0,y:0, angle:0, rotation_done:false, dead:false},
-              bug5: {x:0,y:0, angle:0, rotation_done:false, dead:false},
-              bug6: {x:0,y:0, angle:0, rotation_done:false, dead:false},
-              bug7: {x:0,y:0, angle:0, rotation_done:false, dead:false},
+      bugs: { bug1: {x:0,y:0, angle:0, rotation_done:false, dead:false,hidden:true},
+              bug2: {x:0,y:0, angle:0, rotation_done:false, dead:false,hidden:true},
+              bug3: {x:0,y:0, angle:0, rotation_done:false, dead:false,hidden:true},
+              bug4: {x:0,y:0, angle:0, rotation_done:false, dead:false,hidden:true},
+              bug5: {x:0,y:0, angle:0, rotation_done:false, dead:false,hidden:true},
+              bug6: {x:0,y:0, angle:0, rotation_done:false, dead:false,hidden:true},
+              bug7: {x:0,y:0, angle:0, rotation_done:false, dead:false,hidden:true},
       }
 
     };
@@ -102,12 +116,60 @@ export default {
       // Set the 'dead' property of the clicked bug to true
       console.log("you killed " + this.bugs[bugId] )
       this.bugs[bugId].dead = true;
+
+      const element = document.getElementById(bugId)
+
+      if(this.bugs[bugId].dead){
+
+        //element.classList.add('splat-animation');
+        //initialize a splat animaiton here
+        // find a way for it to be instant
+        //maybe call it everywhere in the function :)
+        console.log("doesnt want to die. " + this.bugs[bugId] )
+
+        element.style.transition = `transform ${2000}ms ease-in-out`;
+
+        //maybe change the animation here..
+        element.style.transform = `translate(${2}vh, ${2}vh) rotate(${-720}deg) scale(0.1)`;
+      }
+
+    },
+    async showBug(bugId) {
+
+      this.bugs[bugId].x = window.innerWidth + Math.random() * 50 + 50;
+      this.bugs[bugId].y = Math.random() * (window.innerHeight - 100) + 50;
+
+      const starting_position_bug = {
+        x: this.bugs[bugId].x,
+        y: this.bugs[bugId].y,
+      };
+
+      const element = document.getElementById(bugId)
+
+      element.style.transition = `transform ${200}ms ease-in-out`;
+      element.style.transform = `translate(${starting_position_bug.x}px, ${starting_position_bug.y}px) scale(0.2)`;
+
+      await new Promise((resolve) => setTimeout(resolve, 200));
+      element.style.display = 'block';
+      this.bugs[bugId].hidden = false;
     },
 
     async moveBug(bugId, bugx, bugy, bugangle) {
 
+      if(this.bugs[bugId].dead){
+        return;
+      }
+
+      if(this.bugs[bugId].hidden){
+
+        await this.showBug(bugId);
+        await this.moveBug(bugId, this.bugs[bugId].x, this.bugs[bugId].y, this.bugs[bugId].angle);
+        return;
+      }
+
       const element = document.getElementById(bugId);
       const line = document.getElementById('line');
+
 
 
       const starting_position_bug = {
@@ -115,21 +177,14 @@ export default {
         y: bugy
       };
 
-      // setTimeout(() => {
-      //   element.style.transform = `translate(${bugx}px, ${bugy}px) rotate(${bugangle}deg) scale(0.2)`;
-      // }, 1);
-
-
       const container = document.getElementById("bugarea1"); // Replace with your actual container ID
       const containerWidth = container.offsetWidth;
       const containerHeight = container.offsetHeight;
 
       const minDistanceFromEdge = 100;
 
-
       const maxX = containerWidth - minDistanceFromEdge;
       const maxY = containerHeight - minDistanceFromEdge;
-
 
       const randomX = minDistanceFromEdge + Math.random() * (maxX - minDistanceFromEdge);
       const randomY = minDistanceFromEdge + Math.random() * (maxY - minDistanceFromEdge);
@@ -147,18 +202,23 @@ export default {
       // Get angle between points
       const angleDeg = (Math.atan2(ending_position_bug.y - starting_position_bug.y, ending_position_bug.x - starting_position_bug.x) * 180 / Math.PI);
 
-
       // line.style.width = length + 'px';
       // line.style.left = (starting_position_bug.x) + 'px';
       // line.style.top = (starting_position_bug.y) + 'px';
       // line.style.transform = 'rotate(' + angleDeg + 'deg)';
 
-
+      if(this.bugs[bugId].dead){
+        return;
+      }
 
       //setTimeout(() => {
       element.style.transition = `transform ${2000}ms ease-in-out`;
       element.style.transform = `translate(${starting_position_bug.x}px, ${starting_position_bug.y}px) rotate(${angleDeg + 90}deg) scale(0.2)`;
       element.style.transformOrigin = 'center center';
+
+      if(this.bugs[bugId].dead){
+        return;
+      }
 
       await new Promise((resolve) => setTimeout(resolve, 2000));
 
@@ -168,7 +228,9 @@ export default {
       //},100);
       // },100);
 
-
+      if(this.bugs[bugId].dead){
+        return;
+      }
       //setTimeout(() => {
       if (this.bugs[bugId].rotation_done) {
         console.log("4");
@@ -188,17 +250,15 @@ export default {
       //},2500);
 
       if(this.bugs[bugId].dead){
-       //initialize a splat animaiton here
-        // find a way for it to be instant
-        //maybe call it everywhere in the function :)
-      } else {
+        return;
+      }
 
       // here we safe the new data in the old data
       await new Promise((resolve) => setTimeout(resolve, total_duration));
       console.log("this is the current data of the bug: x" + this.bugs[bugId].x + " y:" + this.bugs[bugId].y + " angle: " + this.bugs[bugId].angle);
       this.bugs[bugId].rotation_done = false;
       await this.moveBug(bugId, this.bugs[bugId].x, this.bugs[bugId].y, this.bugs[bugId].angle);
-      }
+
 
 
     },
