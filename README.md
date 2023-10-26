@@ -1,3 +1,3 @@
-## Making my first portofolio using Nuxt!
+# Making my first portofolio using Nuxt!
 
 
