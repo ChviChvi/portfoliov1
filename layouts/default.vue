@@ -1,34 +1,49 @@
 <template>
+
+  <header class="bugcounter"> {{ deadBugsCount }}/6 bugs fixed
+    <meta name="viewport" content="width=device-width, initial scale= 1.0">
+  </header>
+
+
   <div class="background_background1" id="bugarea1">
 <!--    <div class="line" id="line"></div>-->
     <!-- Bug 1 -->
-    <div class="bug top-left" id="bug1" @click="handleBugClick('bug1')">
-      <img src="../assets/bugs/bug-example1.png" alt="Bug 1" />
+    <div class="bug-group">
+      <div class="bug top-left" id="bug1" @click="handleBugClick('bug1')">
+        <img src="../assets/bugs/green_bug.gif" alt="Bug 1" />
+      </div>
+
+      <!-- Bug 2 -->
+      <div class="bug top-right" id="bug2" @click="handleBugClick('bug2')">
+        <img src="../assets/bugs/purple_bug.gif" alt="Bug 1" />
+      </div>
+
+      <div class="bug bottom-left" id="bug3" @click="handleBugClick('bug3')">
+        <img src="../assets/bugs/red_bug.gif" alt="Bug 1" />
+      </div>
+
+      <div class="bug bottom-right" id="bug4" @click="handleBugClick('bug4')">
+        <img src="../assets/bugs/green_bug.gif" alt="Bug 1" />
+      </div>
+
+      <div class="bug bottom-right" id="bug5" @click="handleBugClick('bug5')">
+        <img src="../assets/bugs/purple_bug.gif" alt="Bug 1" />
+      </div>
+
+      <div class="bug bottom-right" id="bug6" @click="handleBugClick('bug6')">
+        <img src="../assets/bugs/red_bug.gif" alt="Bug 1" />
+      </div>
     </div>
 
-    <!-- Bug 2 -->
-    <div class="bug top-right" id="bug2" @click="handleBugClick('bug2')">
-      <img src="../assets/bugs/bug-example2.png" alt="Bug 2" />
-    </div>
 
-    <div class="bug bottom-left" id="bug3" @click="handleBugClick('bug3')">
-      <img src="../assets/bugs/bug-example1.png" alt="Bug 1" />
-    </div>
-
-    <div class="bug bottom-right" id="bug4" @click="handleBugClick('bug4')">
-      <img src="../assets/bugs/bug-example1.png" alt="Bug 1" />
-    </div>
-
-    <div class="bug bottom-right" id="bug5" @click="handleBugClick('bug5')">
-      <img src="../assets/bugs/bug-example1.png" alt="Bug 1" />
-    </div>
-
-
-    <header class="bugcounter"> {{ deadBugsCount }}/5 bugs fixed</header>
     <div className="nav-background" />
     <navigation > </navigation>
 
-    <slot class="column_body"> </slot>
+    <slot class="column_body">
+
+
+
+    </slot>
     <bottomfoot id="bottomfoot" />
   </div>
 </template>
@@ -73,6 +88,7 @@ export default {
     this.moveBug('bug3', this.bugs.bug3.x, this.bugs.bug3.y,this.bugs.bug3.angle);
     this.moveBug('bug4', this.bugs.bug4.x, this.bugs.bug4.y,this.bugs.bug4.angle);
     this.moveBug('bug5', this.bugs.bug5.x, this.bugs.bug5.y,this.bugs.bug5.angle);
+    this.moveBug('bug6', this.bugs.bug6.x, this.bugs.bug6.y,this.bugs.bug6.angle);
 
 
 
@@ -102,7 +118,7 @@ export default {
               bug4: {x:0,y:0, angle:0, rotation_done:false, dead:false,hidden:true},
               bug5: {x:0,y:0, angle:0, rotation_done:false, dead:false,hidden:true},
               bug6: {x:0,y:0, angle:0, rotation_done:false, dead:false,hidden:true},
-              bug7: {x:0,y:0, angle:0, rotation_done:false, dead:false,hidden:true},
+
       }
 
     };
@@ -130,7 +146,7 @@ export default {
         element.style.transition = `transform ${2000}ms ease-in-out`;
 
         //maybe change the animation here..
-        element.style.transform = `translate(${2}vh, ${2}vh) rotate(${-720}deg) scale(0.1)`;
+        element.style.transform = `translate(${-6}vh, ${0}vh) rotate(${-720}deg) scale(0.2)`;
       }
 
     },
@@ -181,13 +197,19 @@ export default {
       const containerWidth = container.offsetWidth;
       const containerHeight = container.offsetHeight;
 
-      const minDistanceFromEdge = 100;
+      console.log(containerWidth)
+      console.log(containerHeight)
+
+      const minDistanceFromEdge = 200;
 
       const maxX = containerWidth - minDistanceFromEdge;
       const maxY = containerHeight - minDistanceFromEdge;
 
-      const randomX = minDistanceFromEdge + Math.random() * (maxX - minDistanceFromEdge);
-      const randomY = minDistanceFromEdge + Math.random() * (maxY - minDistanceFromEdge);
+      // const randomX = minDistanceFromEdge + Math.random() * (maxX - minDistanceFromEdge);
+      // const randomY = minDistanceFromEdge + Math.random() * (maxY - minDistanceFromEdge);
+      const randomX = minDistanceFromEdge + Math.random() * (maxX - minDistanceFromEdge * 2);
+      const randomY = minDistanceFromEdge + Math.random() * (maxY - minDistanceFromEdge * 2);
+
 
       const ending_position_bug = {x: randomX, y: randomY};
 
@@ -262,135 +284,6 @@ export default {
 
 
     },
-
-
-    // const starting_position_bug = {
-    //   x: element.offsetLeft + element.offsetWidth / 2,
-    //   y: element.offsetTop + element.offsetHeight / 2
-    // };
-    //const rect = element.getBoundingClientRect();
-    //const currentX = rect.left + rect.width / 2;
-    //const currentY = rect.top + rect.height / 2;
-    //const newX = currentX + randomX;
-    //const newY = currentY + randomY;
-    // getCurrentRotation(el) {
-    //   const st = window.getComputedStyle(el, null);
-    //   const tm = st.getPropertyValue("-webkit-transform") ||
-    //       st.getPropertyValue("-moz-transform") ||
-    //       st.getPropertyValue("-ms-transform") ||
-    //       st.getPropertyValue("-o-transform") ||
-    //       st.getPropertyValue("transform") ||
-    //       "none";
-    //   if (tm !== "none") {
-    //     const values = tm.split('(')[1].split(')')[0].split(',');
-    //     /*
-    //     a = values[0];
-    //     b = values[1];
-    //     angle = Math.round(Math.atan2(b,a) * (180/Math.PI));
-    //     */
-    //     //return Math.round(Math.atan2(values[1],values[0]) * (180/Math.PI)); //this would return negative values the OP doesn't wants so it got commented and the next lines of code added
-    //     const angle = Math.round(Math.atan2(values[1], values[0]) * (180 / Math.PI));
-    //     return (angle < 0 ? angle + 360 : angle); //adding 360 degrees here when angle < 0 is equivalent to adding (2 * Math.PI) radians before
-    //   }
-    //   return 0;
-    // },
-
-
-
-    // drawLine(startX, startY, endX, endY) {
-    //   const line = document.getElementById('line');
-    //   const length = Math.sqrt((startX- endX  ) ** 2 + (  startY - endY) ** 2);
-    //   const angle = Math.atan2(endY - startY, endX - startX);
-    //
-    //   // Set the position and rotation of the line
-    //   line.style.left = `${startX}px`;
-    //   line.style.top = `${startY}px`;
-    //   line.style.transform = `rotate(${angle}rad)`;
-    //
-    //   // Set the width of the line to match the distance between points
-    //   line.style.width = `${length}px`;
-    // },
-    // drawLineFromTopOfBug(bugId, startX, startY, endX, endY) {
-    //   const bug = document.getElementById(bugId);
-    //   const line = document.getElementById('line');
-    //
-    //   // Calculate the position of the top center of the bug
-    //   const bugRect = bug.getBoundingClientRect();
-    //   const bugTopCenterX = bugRect.left + bugRect.width / 2;
-    //   const bugTopCenterY = bugRect.top;
-    //
-    //   // Calculate the length and angle of the line
-    //   const length = Math.sqrt((endX - bugTopCenterX) ** 10 + (endY - bugTopCenterY) ** 10);
-    //   const angle = Math.atan2(endY - bugTopCenterY, endX - bugTopCenterX);
-    //
-    //   // Set the position of the line to start from the top center of the bug
-    //   line.style.left = `${bugTopCenterX}px`;
-    //   line.style.top = `${bugTopCenterY}px`;
-    //
-    //   // Set the rotation of the line
-    //   line.style.transform = `rotate(${angle}rad)`;
-    //
-    //   // Set the width of the line to match the distance between the bug and the ending point
-    //   line.style.width = `${length}px`;
-    // },
-
-
-    // moveBug(bugId, bugWidth, bugHeight) {
-    //   const element = document.getElementById(bugId);
-    //   const maxDistance = 500;
-    //   const randomX = (Math.random() * 2 - 1) * maxDistance;
-    //   const randomY = (Math.random() * 2 - 1) * maxDistance;
-    //
-    //   // Get the current position
-    //   const currentTransform = getComputedStyle(element).transform;
-    //   const currentX = parseFloat(currentTransform.split(",")[4]) || 0;
-    //   const currentY = parseFloat(currentTransform.split(",")[5]) || 0;
-    //
-    //   // Calculate the new position relative to the current position
-    //   const newX = currentX + randomX;
-    //   const newY = currentY + randomY;
-    //
-    //   // Get the dimensions of the container
-    //   const container = document.getElementById("bugarea1"); // Replace with your actual container ID
-    //   const containerWidth = container.offsetWidth;
-    //   const containerHeight = container.offsetHeight;
-    //
-    //   // Ensure the new position is within the container boundaries
-    //   const padding = 200;
-    //
-    //   const clampedX = Math.min(Math.max(newX, padding), containerWidth - element.offsetWidth - padding);
-    //   const clampedY = Math.min(Math.max(newY, padding), containerHeight - element.offsetHeight - padding);
-    //
-    //   // Calculate the angle between the current position and the destination point
-    //   const angle = Math.atan2(clampedY - currentY, clampedX - currentX);
-    //   const angleDegrees = (angle * 180) / Math.PI;
-    //
-    //   // Rotate the bug
-    //   element.style.transform = `rotate(${angleDegrees}deg)`;
-    //
-    //   // Pause for a specified time (e.g., 500 milliseconds) before moving
-    //   setTimeout(() => {
-    //     element.style.transition = "transform 3s ease";
-    //     // Move the bug to the new position
-    //     element.style.transform = `translate(${clampedX}px, ${clampedY}px) rotate(${angleDegrees}deg)`;
-    //     element.style.width = `${bugWidth}px`;
-    //     element.style.height = `${bugHeight}px`;
-    //
-    //     console.log(`Current position for bugId ${bugId}: X=${clampedX}, Y=${clampedY}`);
-    //
-    //     // Pause for a specified time (e.g., 500 milliseconds) before scheduling the next rotation and movement
-    //     setTimeout(() => {
-    //       this.moveBug(bugId, bugWidth, bugHeight);
-    //     }, 2000); // Adjust the pause duration as needed
-    //   }, 2000); // Adjust the pause duration as needed
-    // },
-
-
-
-
-
-
-
 
 
     handleWheel(event) {
