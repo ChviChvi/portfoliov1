@@ -1,7 +1,8 @@
 <template>
   <div class="page">
     <div>
-      <h1>Diplomingeniør i Softwareteknologi Studerende</h1>
+      <h1>Studerende</h1>
+      <h1>Diplomingeniør i Softwareteknologi</h1>
       <h2>Christiaan Vink</h2>
     </div>
     <div>

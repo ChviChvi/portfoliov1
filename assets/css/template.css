@@ -1,22 +1,76 @@
 html{
-    background: lightslategrey;
+    background: #ffffff;
+    margin: 0;
     padding: 0;
-    color: white;
+
+    color: #0F4C5C;
+
+    height: 100vh;
+    width: 100vw;
+
 }
 
-.background_background1{
-    position: relative;
+@font-face {
+    font-family: 'Retro Gaming';
+    src: url('assets/bugs/Retro Gaming.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+h1{
+    color:#16697A;
+    font-family: 'Retro Gaming', sans-serif;
+    -moz-text-size-adjust: auto;
+
+}
+h2{
+    color: #489fb5;
+    font-family: 'Retro Gaming', sans-serif;
+    -moz-text-size-adjust: auto;
+
 }
 
-/*
-BUGS
- */
+
+
+
+
+/* otherwise the website is pushed down */
+header{
+    height: 0vh;
+    width: 0vw;
+}
+
+/* this is needed otherwise there is a border?...*/
+body {
+    margin: 0;
+    padding: 0;
+}
+
+ul, li {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+
+}
+
 .background_background1 {
     position: relative;
-    width: 100%;
+    margin: 0;
+    padding: 0;
+    width: 100vw;
     height: 100vh;
+    overflow: hidden;
+    background: #EDE7E3;
+
      /* Set your background color */
 }
+
+/* removes bugs on phones */
+@media screen and (max-width: 600px) {
+    .bug-group {
+        display: none;
+    }
+}
+
 
 .bug {
     position: absolute;
@@ -28,12 +82,6 @@ BUGS
 }
 
 
-.splat-animation {
-    transition: transform 0.2s ease-in-out;
-    transform: translateY(90vh); /* Move the bug to the bottom of the screen */
-    /* You can add more CSS properties here to style the "splat" appearance */
-}
-
 .line {
     position: absolute;
     transform-origin: left;
@@ -41,44 +89,6 @@ BUGS
     height: 2px; /* Thickness of the line */
     width: 0; /* Initially, the line has zero width */
     transition: width 0.5s; /* Add a transition effect for smooth line drawing */
-}
-
-
-
-
-/*.rotating {*/
-/*    animation: rotate 1s linear infinite;*/
-/*}*/
-
-/*@keyframes rotate {*/
-/*    0% {*/
-/*        transform: rotate(0deg);*/
-/*    }*/
-/*    100% {*/
-/*        transform: rotate(360deg);*/
-/*    }*/
-/*}*/
-
-/*
-
- */
-.upper-background{
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 50%;
-    height: auto;
-    background-size: 50% auto;
-    z-index: -1;
-}
-
-
-body {
-    overflow: hidden;
-}
-
-header{
-    height: 0vh;
 }
 
 
@@ -107,78 +117,65 @@ header{
 }
 
 
-ul, li {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-}
-
-
-
 .nav-background{
-    padding-bottom: 20vh;
-    background: rgba(255,255,255, 0.4) ;
-    height: 78vh;
+    background: rgba(255,166,43, 0.9) ;
+    position: relative;
+    height: 40vh;
+    margin-top: 20%;
+    margin-bottom: 20%;
     float: right;
-    width: 15vh;
+    width: 25vw;
+    color: rgba(255,166,43, 0.1) ;
+
 }
 .column_nav{
-    padding-top: 20vh;
-    position: relative;
-    background: rgba(255,255,255, 0.4) ;
     right: 0;
-    width: 15vh;
-    color: rgba(255,255,255, 1) ;
-    height: 78vh;
-
-
+    float: left;
+    height:10%;
+    width: 100%;
+    color: red;
 }
 
 .nav_boxes1{
-    padding: 1vh;
+    padding: 0.5vh;
     color: red;
 }
 .nav_boxes2{
-    padding: 1vh;
+    padding: 0.5vh;
 
 }
 .nav_boxes3{
-    padding: 1vh;
+    padding: 0.5vh;
 
 }
 .nav_boxes4{
-    padding: 1vh;
+    padding: 0.5vh;
 
 }
 .nav_boxes5{
-    padding: 1vh;
+    padding: 0.5vh;
 
 }
 .nav_boxes6{
-    padding: 1vh;
+    padding: 0vh;
 
 }
 
 
 .page{
+    /*background: rgba(166,66,166, 0.4) ;*/
     align-items: center;
     position: relative;
     display: flex;
-    left: 8vh;
-    height: 95vh;
-    width: 80vh;
+    left: 8vh; /*was 8vh */
+    height: 94vh;
+    width: 75vw;
     justify-content: center;
     pointer-events: none;
 }
-h1{
-
-}
-
-
 
 .page-enter-active,
 .page-leave-active {
-
     transition: opacity 0.425s, transform 0.425s;
 }
 .page-enter-from{
@@ -190,54 +187,49 @@ h1{
     transform: translateY(20vh);
 }
 
-.background-contact{
-    background: red;
-}
-
-
 #bottomfoot{
     position: relative;
-    bottom: 0;
-    width: 100%;
 
-    height: 5vh;            /* Footer height */
-
+    width: 100vw;
+    pointer-events: auto;
+    height: 6vh;
 }
+
+
 .uffe-gif{
     max-width: 80px;
     max-height: 80px;
-    width: 80px; /* Adjust the width to your desired size */
+    width: 80px;
     position: absolute;
     height: auto;
-    bottom:0;
+    bottom:-2vh;
     right:0;
 }
 
 .githubicon{
-    width: 40px; /* Adjust the width to your desired size */
+    width: 6vh; /* Adjust the width to your desired size */
     position: relative;
     height: auto;
     float: left;
     opacity: 0.5;
-    bottom: 8vh;
-    left: 8vh;
+    bottom: 1vh;
+    left: 1vw;
 }
 
 .linkedinicon{
-    width: 40px; /* Adjust the width to your desired size */
+    width: 6vh; /* Adjust the width to your desired size */
     position: relative;
     height: auto;
-    padding-left: 0.5rem;
+    padding-left: 0.5vh;
     float: left;
     opacity: 0.5;
-    bottom: 8vh;
-    left: 8vh;
+    bottom: 1vh;
+    left: 1vw;
 }
 .bugcounter{
-    top: 8vh;
+    top: 15vh;
     position: relative;
-    left: 8vh;
+    left: 15vh;
+    color: red;
 }
-
-
 
